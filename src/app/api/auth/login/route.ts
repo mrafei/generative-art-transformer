@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import signup from "@/helpers/api/auth/signup";
+import login from "@/helpers/api/auth/login";
 import CustomError from "@/utils/CustomError";
 import dbConnect from "@/helpers/api/dbconnect";
 
@@ -7,8 +7,8 @@ export async function POST(req: Request) {
   try {
     await dbConnect();
     const body = await req.json();
-    const user = await signup(body);
-    return NextResponse.json(user, { status: 201 });
+    const user = await login(body);
+    return NextResponse.json(user, { status: 200 });
   } catch (e) {
     if (e instanceof CustomError)
       return NextResponse.json(
