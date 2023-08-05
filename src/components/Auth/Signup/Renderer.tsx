@@ -1,5 +1,6 @@
 import Input from "@/components/Input";
 import Link from "next/link";
+import { LOGIN_ROUTE } from "@/constants/routes";
 import type { FC } from "react";
 
 const SignupRenderer: FC = () => (
@@ -16,7 +17,7 @@ const SignupRenderer: FC = () => (
       >
         Signup
       </button>
-      <Link href="/auth/login">
+      <Link href={LOGIN_ROUTE}>
         <p className="mb-0 mr-2 hover:text-primary">Have an account already?</p>
       </Link>
     </div>

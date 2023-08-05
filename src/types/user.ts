@@ -9,6 +9,7 @@ export enum UserStatus {
 
 
 export interface IUser {
+  id: string;
   username: string;
   hash: string;
   name: string;

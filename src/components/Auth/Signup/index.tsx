@@ -1,3 +1,4 @@
+"use client";
 import SignupRenderer from "./Renderer";
 import type { FC } from "react";
 
