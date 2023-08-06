@@ -6,6 +6,7 @@ import type { LoginHook } from "@/hooks/auth/useLogin";
 
 const LoginRenderer: FC<ReturnType<LoginHook>> = (props) => {
   const { username, setUsername, password, setPassword, login } = props;
+  const isButtonDisabled = !username || !password;
   return (
     <div className="flex flex-col gap-4">
       <p>Please login to your account</p>
@@ -27,8 +28,8 @@ const LoginRenderer: FC<ReturnType<LoginHook>> = (props) => {
       <div className="flex items-center justify-between pb-6">
         <button
           type="button"
-          className="inline-block rounded border-2 border-red-600 px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-red-600 transition duration-150 ease-in-out hover:border-red-600 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-red-600 focus:border-red-600 focus:text-red-600 focus:outline-none focus:ring-0 active:border-red-700 active:text-red-700"
-          data-te-ripple-color="light"
+          disabled={isButtonDisabled}
+          className="inline-block rounded border-2 border-red-600 px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-red-600 transition duration-150 ease-in-out [&:not(:disabled)]:hover:border-red-600 [&:not(:disabled)]:hover:bg-neutral-500 [&:not(:disabled)]:hover:bg-opacity-10 [&:not(:disabled)]:hover:text-red-600 disabled:border-gray-200 disabled:text-gray-400"
           onClick={login}
         >
           Login

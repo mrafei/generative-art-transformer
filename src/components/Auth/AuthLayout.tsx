@@ -3,8 +3,8 @@ import type { FC, PropsWithChildren } from "react";
 
 const AuthLayout: FC<PropsWithChildren> = ({ children }) => {
   return (
-    <section className="gradient-form h-full bg-neutral-200">
-      <div className="container h-full p-10">
+    <section className="gradient-form h-full bg-neutral-200 flex flex-1 flex-col justify-center items-center">
+      <div className="container max-w-6xl mx-auto h-full p-10">
         <div className="g-6 flex h-full flex-wrap items-center justify-center text-neutral-800">
           <div className="w-full">
             <div className="block rounded-lg bg-white shadow-lg">
