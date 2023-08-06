@@ -18,7 +18,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en">
       <body className={inter.className}>
         {children}
-        <ToastContainer hideProgressBar autoClose={1000} />
+        <ToastContainer hideProgressBar autoClose={1000} pauseOnHover={false} />
       </body>
     </html>
   );

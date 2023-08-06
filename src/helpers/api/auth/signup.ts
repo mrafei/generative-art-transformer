@@ -18,8 +18,8 @@ const signup = async (params: SignupParams) => {
     const user = new User(params);
 
     if (password) user.hash = bcrypt.hashSync(params.password, 10);
-
-    return await user.save().toJSON();
+    await user.save();
+    return user.toJSON();
   } catch (e) {
     if (e instanceof CustomError) throw e;
     throw new CustomError(String(e), 500);

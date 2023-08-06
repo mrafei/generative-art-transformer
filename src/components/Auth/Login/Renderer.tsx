@@ -3,6 +3,7 @@ import Link from "next/link";
 import { SIGNUP_ROUTE } from "@/constants/routes";
 import type { FC } from "react";
 import type { LoginHook } from "@/hooks/auth/useLogin";
+import Button from "@/components/Button";
 
 const LoginRenderer: FC<ReturnType<LoginHook>> = (props) => {
   const { username, setUsername, password, setPassword, login } = props;
@@ -26,14 +27,9 @@ const LoginRenderer: FC<ReturnType<LoginHook>> = (props) => {
       />
 
       <div className="flex items-center justify-between pb-6">
-        <button
-          type="button"
-          disabled={isButtonDisabled}
-          className="inline-block rounded border-2 border-red-600 px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-red-600 transition duration-150 ease-in-out [&:not(:disabled)]:hover:border-red-600 [&:not(:disabled)]:hover:bg-neutral-500 [&:not(:disabled)]:hover:bg-opacity-10 [&:not(:disabled)]:hover:text-red-600 disabled:border-gray-200 disabled:text-gray-400"
-          onClick={login}
-        >
+        <Button disabled={isButtonDisabled} onClick={login}>
           Login
-        </button>
+        </Button>
         <Link href={SIGNUP_ROUTE}>
           <p className="mb-0 mr-2 hover:text-primary">
             Don&apos;t have an account?
