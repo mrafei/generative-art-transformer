@@ -2,9 +2,9 @@ import User from "@/models/User";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import CustomError from "@/utils/CustomError";
-
-import type { IUser } from "@/types/user";
+import jwtSecret from "@/configs/jwt";
 import { UserStatus } from "@/types/user";
+import type { IUser } from "@/types/user";
 
 export type LoginParams = {
   username: IUser["username"];
@@ -13,7 +13,6 @@ export type LoginParams = {
 const login = async (params: LoginParams) => {
   const { username, password } = params;
   const user = await User.findOne({ username });
-  const jwtSecret = process.env.JWT_SECRET;
   if (!(user && bcrypt.compareSync(password, user.hash)))
     throw new CustomError("username or password is incorrect");
   if (user.status !== UserStatus.ACTIVE)
