@@ -3,6 +3,8 @@ import { LOGIN_URL } from "@/constants/api";
 import HTTPStatusCodes from "@/constants/http";
 import { toast } from "react-toastify";
 import type { IUser } from "@/types/user";
+import { setCookie } from "cookies-next";
+import { AUTH_COOKIE_KEY } from "@/constants/cookies";
 
 type LoginResponseSuccessType = Omit<IUser, "hash"> & {
   statusCode: HTTPStatusCodes.Ok;
@@ -21,6 +23,7 @@ async function login(username: string, password: string) {
       body: { username, password },
     });
     if (res.statusCode === HTTPStatusCodes.Ok) {
+      setCookie(AUTH_COOKIE_KEY, res.token);
       toast("You are now logged in!", {
         toastId: "login-success",
         type: "success",
