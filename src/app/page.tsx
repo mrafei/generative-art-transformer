@@ -1,7 +1,10 @@
-import Image from "next/image";
+import HomeLayout from "@/components/Home/Layout";
+import HomeSections from "@/components/Home/Sections";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24"></main>
+    <HomeLayout>
+      <HomeSections />
+    </HomeLayout>
   );
 }
