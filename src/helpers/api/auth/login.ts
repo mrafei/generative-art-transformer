@@ -15,8 +15,6 @@ const login = async (params: LoginParams) => {
   const user = await User.findOne({ username });
   if (!(user && bcrypt.compareSync(password, user.hash)))
     throw new CustomError("username or password is incorrect");
-  if (user.status !== UserStatus.ACTIVE)
-    throw new CustomError("your account has been disabled!", 409);
   if (!jwtSecret) throw new CustomError("no jwt secret has been set", 500);
 
   const token = jwt.sign({ username, id: user.id }, jwtSecret);

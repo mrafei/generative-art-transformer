@@ -4,7 +4,8 @@ import dbConnect from "@/helpers/api/dbconnect";
 import transform from "@/helpers/api/images/transform";
 import parseToken from "@/utils/parseToken";
 import HTTPStatusCodes from "@/constants/http";
-import { headers } from 'next/headers'
+import { headers } from "next/headers";
+import getUser from "@/helpers/api/user/get";
 
 export async function POST(req: Request) {
   try {
@@ -12,11 +13,18 @@ export async function POST(req: Request) {
     const body = await req.json();
     const headersList = headers();
     const authHeader = headersList.get("Authorization");
-    if (!authHeader)
-      throw new CustomError("Unauthorized!", HTTPStatusCodes.Unauthorized);
+    const token = parseToken(authHeader || "");
+    if (!token)
+      throw new CustomError(
+        "No Authorization header is set",
+        HTTPStatusCodes.Unauthorized,
+      );
+    const user = await getUser({
+      token,
+    });
     const artwork = await transform({
       ...body,
-      token: parseToken(authHeader),
+      userId: user._id.toString(),
     });
     return NextResponse.json(artwork, { status: 200 });
   } catch (e) {
