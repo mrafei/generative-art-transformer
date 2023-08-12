@@ -4,9 +4,8 @@ import { AUTH_COOKIE_KEY } from "@/constants/cookies";
 import { redirect } from "next/navigation";
 import { LOGIN_ROUTE } from "@/constants/routes";
 import Dashboard from "@/components/Dashboard";
-import type { FC } from "react";
 
-const DashboardPage: FC = async () => {
+const DashboardPage = async () => {
   const cookieStore = cookies();
 
   const user = await authServices.self(cookieStore.get(AUTH_COOKIE_KEY)?.value);
