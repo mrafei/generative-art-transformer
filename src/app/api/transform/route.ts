@@ -1,9 +1,8 @@
 import { NextResponse } from "next/server";
 import CustomError from "@/utils/CustomError";
 import dbConnect from "@/helpers/api/dbconnect";
-import transform from "@/helpers/api/images/transform";
 import parseToken from "@/utils/parseToken";
-import HTTPStatusCodes from "@/constants/http";
+import transform from "@/helpers/api/art/transform";
 import { headers } from "next/headers";
 import getUser from "@/helpers/api/user/get";
 

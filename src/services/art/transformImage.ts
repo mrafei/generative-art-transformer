@@ -4,6 +4,7 @@ import HTTPStatusCodes from "@/constants/http";
 import { toast } from "react-toastify";
 
 type TransformResponseSuccessType = {
+  id: string;
   final_image_url: string;
   statusCode: HTTPStatusCodes.Ok;
 };
@@ -14,10 +15,7 @@ type TransformResponseFailedType = {
 type TransformResponseType =
   | TransformResponseSuccessType
   | TransformResponseFailedType;
-async function transformImage(
-  image_url: string,
-  artist: string,
-) {
+async function transformImage(image_url: string, artist: string) {
   try {
     const res = await request<TransformResponseType>({
       method: "POST",

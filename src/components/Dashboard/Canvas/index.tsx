@@ -5,6 +5,8 @@ import Button from "@/components/Button";
 import type { FC } from "react";
 import type { ImageTransformHook } from "@/hooks/useImageTransform";
 import { toast } from "react-toastify";
+import Link from "next/link";
+import { ART_ROUTE } from "@/constants/routes";
 
 type DashboardCanvasProps = Pick<
   ReturnType<ImageTransformHook>,
@@ -13,7 +15,7 @@ type DashboardCanvasProps = Pick<
 const DashboardCanvas: FC<DashboardCanvasProps> = (props) => {
   const { image, setImage, transformedImage, setTransformedImage } = props;
   const [tempImage, setTempImage] = useState("");
-  const renderedImage = transformedImage || image;
+  const renderedImage = transformedImage?.url || image;
 
   const checkImage = useCallback(
     (imageSrc: string) => {
@@ -43,7 +45,12 @@ const DashboardCanvas: FC<DashboardCanvasProps> = (props) => {
           />
           <div className="flex justify-center gap-5 items-center w-full">
             {transformedImage ? (
-              <Button onClick={() => setTransformedImage(null)}>reset</Button>
+              <>
+                <Link target="_blank" href={ART_ROUTE(transformedImage.id)}>
+                  <Button>share</Button>
+                </Link>
+                <Button onClick={() => setTransformedImage(null)}>reset</Button>
+              </>
             ) : null}
             <Button
               onClick={() => {
