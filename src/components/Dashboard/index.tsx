@@ -1,8 +1,7 @@
 "use client";
-import type { FC } from "react";
 import useImageTransform from "@/hooks/useImageTransform";
-import DashboardCanvas from "@/components/Dashboard/Canvas";
-import DashboardSidebar from "@/components/Dashboard/Sidebar";
+import DashboardRenderer from "@/components/Dashboard/Renderer";
+import type { FC } from "react";
 
 const Dashboard: FC = () => {
   const {
@@ -15,20 +14,15 @@ const Dashboard: FC = () => {
     setTransformedImage,
   } = useImageTransform();
   return (
-    <div className="flex flex-col-reverse md:flex-row flex-1">
-      <DashboardSidebar
-        image={image}
-        artist={artist}
-        setArtist={setArtist}
-        transform={transform}
-      />
-      <DashboardCanvas
-        image={image}
-        transformedImage={transformedImage}
-        setTransformedImage={setTransformedImage}
-        setImage={setImage}
-      />
-    </div>
+    <DashboardRenderer
+      image={image}
+      setImage={setImage}
+      artist={artist}
+      setArtist={setArtist}
+      transformedImage={transformedImage}
+      transform={transform}
+      setTransformedImage={setTransformedImage}
+    />
   );
 };
 

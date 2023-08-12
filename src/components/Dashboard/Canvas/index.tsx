@@ -2,11 +2,16 @@ import ImageIcon from "@/components/Icons/ImageIcon";
 import Input from "@/components/Input";
 import { useCallback, useState } from "react";
 import Button from "@/components/Button";
-import type { FC } from "react";
-import type { ImageTransformHook } from "@/hooks/useImageTransform";
 import { toast } from "react-toastify";
 import Link from "next/link";
 import { ART_ROUTE } from "@/constants/routes";
+import {
+  IMAGE_CLEAR_BUTTON_ID,
+  IMAGE_INPUT_TEST_ID,
+  IMAGE_SUBMIT_BUTTON_ID,
+} from "@/constants/tests";
+import type { FC } from "react";
+import type { ImageTransformHook } from "@/hooks/useImageTransform";
 
 type DashboardCanvasProps = Pick<
   ReturnType<ImageTransformHook>,
@@ -53,6 +58,7 @@ const DashboardCanvas: FC<DashboardCanvasProps> = (props) => {
               </>
             ) : null}
             <Button
+              data-testid={IMAGE_CLEAR_BUTTON_ID}
               onClick={() => {
                 setImage(null);
                 setTransformedImage(null);
@@ -66,8 +72,16 @@ const DashboardCanvas: FC<DashboardCanvasProps> = (props) => {
         <div className="flex flex-col gap-3 items-center justify-center bg-white px-10 pt-10 pb-5 rounded-lg">
           <ImageIcon />
           <p>Insert your image url here</p>
-          <Input value={tempImage} onChange={setTempImage} />
-          <Button disabled={!tempImage} onClick={() => checkImage(tempImage)}>
+          <Input
+            data-testid={IMAGE_INPUT_TEST_ID}
+            value={tempImage}
+            onChange={setTempImage}
+          />
+          <Button
+            data-testid={IMAGE_SUBMIT_BUTTON_ID}
+            disabled={!tempImage}
+            onClick={() => checkImage(tempImage)}
+          >
             open
           </Button>
         </div>

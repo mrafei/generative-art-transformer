@@ -24,7 +24,7 @@ async function getArtsList() {
     return null;
   } catch (e) {
     // eslint-disable-next-line no-console
-    console.log("get art service failed!", e);
+    console.log("art list service failed!", e);
     return null;
   }
 }
