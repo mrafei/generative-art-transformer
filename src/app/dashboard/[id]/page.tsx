@@ -1,5 +1,5 @@
 import artServices from "@/services/art";
-import ArtPreview from "@/components/Dashboard/ArtPreview";
+import ArtPreview from "@/components/ArtPreview";
 import type { FC } from "react";
 
 type ArtPageProps = { params: { id: string } };

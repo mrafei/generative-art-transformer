@@ -1,7 +1,8 @@
-import type { FC } from "react";
 import Input from "@/components/Input";
 import Button from "@/components/Button";
-import { ImageTransformHook } from "@/hooks/useImageTransform";
+import DashboardRecentArts from "@/components/Dashboard/Sidebar/RecentArts";
+import type { ImageTransformHook } from "@/hooks/useImageTransform";
+import type { FC } from "react";
 
 type DashboardSidebarProps = Pick<
   ReturnType<ImageTransformHook>,
@@ -15,6 +16,8 @@ const DashboardSidebar: FC<DashboardSidebarProps> = (props) => {
       <Button onClick={transform} disabled={!artist || !image}>
         Transform!
       </Button>
+
+      <DashboardRecentArts />
     </div>
   );
 };

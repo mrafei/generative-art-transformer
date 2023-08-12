@@ -7,7 +7,7 @@ export async function GET() {
   try {
     await dbConnect();
     const arts = await getArtList();
-    return NextResponse.json(arts, { status: 200 });
+    return NextResponse.json({ arts }, { status: 200 });
   } catch (e) {
     if (e instanceof CustomError)
       return NextResponse.json(
