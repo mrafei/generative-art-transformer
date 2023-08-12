@@ -14,14 +14,7 @@ export async function POST(req: Request) {
     const headersList = headers();
     const authHeader = headersList.get("Authorization");
     const token = parseToken(authHeader || "");
-    if (!token)
-      throw new CustomError(
-        "No Authorization header is set",
-        HTTPStatusCodes.Unauthorized,
-      );
-    const user = await getUser({
-      token,
-    });
+    const user = await getUser({ token });
     const artwork = await transform({
       ...body,
       userId: user._id.toString(),

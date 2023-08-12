@@ -3,11 +3,12 @@ import imageServices from "@/services/image";
 
 export type ImageTransformHook = () => {
   image: Nullable<string>;
-  setImage: (image: string) => void;
+  setImage: (image: Nullable<string>) => void;
   artist: string;
   setArtist: (artist: string) => void;
   transform: () => void;
   transformedImage: Nullable<string>;
+  setTransformedImage: (image: Nullable<string>) => void;
 };
 const useImageTransform: ImageTransformHook = () => {
   const [image, setImage] = useState<Nullable<string>>(null);
@@ -22,7 +23,15 @@ const useImageTransform: ImageTransformHook = () => {
     }
   };
 
-  return { image, setImage, artist, setArtist, transform, transformedImage };
+  return {
+    image,
+    setImage,
+    artist,
+    setArtist,
+    transform,
+    transformedImage,
+    setTransformedImage,
+  };
 };
 
 export default useImageTransform;

@@ -6,11 +6,17 @@ import User from "@/models/User";
 import { UserStatus } from "@/types/user";
 
 export type GetUserParams = {
-  token: string;
+  token?: Nullable<string>;
 };
 
 const getUser = async (params: GetUserParams) => {
   const { token } = params;
+  if (!token)
+    throw new CustomError(
+      "No Authorization header is set",
+      HTTPStatusCodes.Unauthorized,
+    );
+
   if (!jwtSecret)
     throw new CustomError(
       "no jwt secret has been set",

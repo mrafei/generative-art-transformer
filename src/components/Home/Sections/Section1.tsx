@@ -10,7 +10,7 @@ const HomeSection1: FC = () => {
           <Image
             fill
             objectFit="cover"
-            src="/sectionImages/section1/real.jpg"
+            src="/images/section1/real.jpg"
             className="w-full h-full top-0 left-0 object-cover rounded-2xl"
             alt="landscape image"
           />
@@ -20,7 +20,7 @@ const HomeSection1: FC = () => {
             fill
             objectFit="cover"
             className="w-full h-full top-0 left-0 object-cover rounded-2xl"
-            src="/sectionImages/section1/converted.jpg"
+            src="/images/section1/converted.jpg"
             alt="artistic landscape image"
           />
         </div>

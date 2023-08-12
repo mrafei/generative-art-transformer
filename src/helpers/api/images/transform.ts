@@ -12,7 +12,8 @@ const transform = async (params: TransformParams) => {
   const artwork = new ArtWork({
     initial_image_url: image_url,
     artist,
-    final_image_url: "https://mock.png",
+    final_image_url:
+      "https://main.d1facf9nj5bmyt.amplifyapp.com/images/transformed.jpg",
     creator: userId,
   });
 
