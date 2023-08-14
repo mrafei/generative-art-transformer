@@ -6,7 +6,7 @@ import { ART_ROUTE } from "@/constants/routes";
 
 const DashboardRecentArts: FC = () => {
   const arts = useArtList();
-
+  if (!arts?.length) return null;
   return (
     <div>
       <div className="my-3">Be Inspired!</div>
